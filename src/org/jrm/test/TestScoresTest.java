@@ -1,6 +1,7 @@
 package org.jrm.test;
 
 import org.jrm.TestScores;
+import org.jrm.InvalidTestScore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +54,13 @@ class TestScoresTest {
         assertEquals(33, ts.scoreAverage(), "Average of 100, 0 and 0 is 33");
     }
 
-    // TODO: Demonstrate the class in a program.Write an exception class named InvalidTestScores.
+    // TODO: Demonstrate the class in a program. Write an exception class named InvalidTestScores.
+    @DisplayName("Can throw custom exception")
+    @Test
+    void tooDumb()
+    {
+        assertThrows(InvalidTestScore.class, ()->{ new TestScores(new Integer[] {19}); }, "Scores greater than 0 but less than 20 are impossible");
+    }
 
     // TODO: Modify the TestScores class to throw an InvalidTestScore exception if any of the test scores in the array are invalid.
 }
