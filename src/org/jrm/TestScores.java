@@ -7,7 +7,18 @@ public class TestScores
     public TestScores(Integer [] scores) throws IllegalArgumentException
     {
         for (Integer i : scores)
+        {
+            if (i < 0)
+            {
+                throw new IllegalArgumentException("Test score cannot be less than 0");
+            }
+            else if (i > 100)
+            {
+                throw new IllegalArgumentException("Test score cannot exceed 100");
+            }
+
             scoreList = push(scoreList, i);
+        }
     }
 
     private static Integer[] push(Integer[] array, Integer pushed)
