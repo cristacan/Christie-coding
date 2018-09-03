@@ -3,7 +3,6 @@ package org.jrm.test;
 import org.jrm.TestScores;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,13 +41,16 @@ class TestScoresTest {
         assertThrows(IllegalArgumentException.class, ()->{ new TestScores(new Integer[] {101}); }, "Cannot accept scores less than 0");
     }
 
-    // TODO: The class should have a method that returns the average of the test scores.
+    // DONE: The class should have a method that returns the average of the test scores.
     @DisplayName("Return average of all scores")
     @Test
     void verifyAverage()
     {
         ts = new TestScores(new Integer[]{100, 50});
-        assertEquals(75, ts.scoreAverage(), "Average score should be 75");
+        assertEquals(75, ts.scoreAverage(), "Average of 100 and 50 is 75");
+
+        ts = new TestScores(new Integer[]{100, 0, 0});
+        assertEquals(33, ts.scoreAverage(), "Average of 100, 0 and 0 is 33");
     }
 
     // TODO: Demonstrate the class in a program.Write an exception class named InvalidTestScores.

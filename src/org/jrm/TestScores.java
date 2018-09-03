@@ -2,7 +2,7 @@ package org.jrm;
 
 public class TestScores
 {
-    Integer[] scoreList = new Integer[0];
+    private Integer[] scoreList = new Integer[0];
 
     public TestScores(Integer [] scores) throws IllegalArgumentException
     {
@@ -25,11 +25,23 @@ public class TestScores
     {
         Integer[] returnArray = new Integer[array.length + 1];
 
-        for (int i = 0; i < array.length; i++)
-            returnArray[i] = array[i];
+        System.arraycopy(array, 0, returnArray, 0, array.length);
 
         returnArray[array.length] = pushed;
 
         return returnArray;
+    }
+
+    public int scoreAverage()
+    {
+        int scoreCount = 0;
+        int scoreTotals = 0;
+        for (Integer i : scoreList)
+        {
+            scoreCount += 1;
+            scoreTotals += i;
+        }
+
+        return scoreTotals / scoreCount;
     }
 }
